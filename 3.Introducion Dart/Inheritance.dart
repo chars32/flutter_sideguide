@@ -17,8 +17,12 @@ class Bob extends Person {
   void showEmail(String email) {
     print("Bob's email: $email");
   }
-  // Adding new method 
+
+  // Adding new method
   void showAge(int age) {
+    // Refering to a superclass using super(aka parent class)
+    super.showName("Chars");
+
     print(age.toString());
   }
 }
