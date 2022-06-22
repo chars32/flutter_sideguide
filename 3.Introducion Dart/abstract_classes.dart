@@ -16,7 +16,7 @@ abstract class Test {
 //   }
 // }
 
-// Using implements
+// Using implements - Interface
 class UnitTest implements Test {
   @override
   void testOne() {
@@ -32,5 +32,5 @@ class UnitTest implements Test {
 void main() {
   UnitTest test = UnitTest();
   test.testOne(); // hello!
-  test.testTwo();// hello!
+  test.testTwo(); // hello!
 }
