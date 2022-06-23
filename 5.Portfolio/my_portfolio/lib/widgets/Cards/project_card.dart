@@ -17,8 +17,10 @@ class ProjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
+      width: MediaQuery.of(context).size.width / 1.3,
+      margin: const EdgeInsets.only(top: 15.0, right: 25.0, bottom: 25.0),
       padding: const EdgeInsets.all(15.0),
+      height: 350,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15.0),
