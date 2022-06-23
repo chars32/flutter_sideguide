@@ -34,7 +34,10 @@ class HomePage extends StatelessWidget {
                   ),
                   const Text(
                     "Projects",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
