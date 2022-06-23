@@ -61,11 +61,14 @@ class ProjectCard extends StatelessWidget {
               height: 15,
             ),
             Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Image.network(
-                  project.imageUrl,
-                  fit: BoxFit.cover,
+              child: Hero(
+                tag: project.name,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Image.network(
+                    project.imageUrl,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
