@@ -12,7 +12,7 @@ class ProjectCard extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => const ProjectDetail(),
+          builder: (_) => ProjectDetail(project: project),
         ),
       ),
       child: Container(
