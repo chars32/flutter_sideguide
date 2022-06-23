@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/models/project.dart';
 
 class ProjectCard extends StatelessWidget {
-  final String projectName;
-  final int projectYear;
-  final String projectImage;
-  final String projectDescription;
-  const ProjectCard(
-      {Key? key,
-      required this.projectName,
-      required this.projectYear,
-      this.projectImage =
-          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-      required this.projectDescription})
-      : super(key: key);
+  final Project project;
+  const ProjectCard({Key? key, required this.project}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +29,7 @@ class ProjectCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                projectName,
+                project.name,
                 style: const TextStyle(
                   fontSize: 18,
                 ),
@@ -49,7 +40,7 @@ class ProjectCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15.0)),
                 padding: const EdgeInsets.all(5.0),
                 child: Text(
-                  projectYear.toString(),
+                  project.year.toString(),
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.white,
@@ -65,7 +56,7 @@ class ProjectCard extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15.0),
               child: Image.network(
-                projectImage,
+                project.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -74,7 +65,7 @@ class ProjectCard extends StatelessWidget {
             height: 10,
           ),
           Text(
-            projectDescription,
+            project.description,
             style: const TextStyle(
               fontSize: 14,
               overflow: TextOverflow.ellipsis,

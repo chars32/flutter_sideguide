@@ -15,7 +15,7 @@ class Header extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: const [
             Text(
-              "Welcome back",
+              "Welcome back 👋",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
             ),
             Text(
