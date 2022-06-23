@@ -24,10 +24,12 @@ class Header extends StatelessWidget {
             )
           ],
         ),
-        const Icon(
-          Icons.account_circle,
-          color: Colors.black,
-          size: 30,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(15.0),
+          child: Image.asset(
+            'assets/images/me_avatar.png',
+            height: 45,
+          ),
         ),
       ],
     );
