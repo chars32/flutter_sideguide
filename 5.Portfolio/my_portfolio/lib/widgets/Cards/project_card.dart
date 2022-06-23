@@ -16,7 +16,8 @@ class ProjectCard extends StatelessWidget {
         ),
       ),
       child: Container(
-        width: MediaQuery.of(context).size.width / 1.3,
+        // width: MediaQuery.of(context).size.width / 1.3,
+        width: 300,
         margin: const EdgeInsets.only(top: 15.0, right: 25.0, bottom: 25.0),
         padding: const EdgeInsets.all(15.0),
         height: 350,
