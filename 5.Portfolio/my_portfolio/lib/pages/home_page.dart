@@ -3,6 +3,7 @@ import 'package:my_portfolio/example/projects.dart';
 import 'package:my_portfolio/responsive.dart';
 import 'package:my_portfolio/widgets/Cards/project_card.dart';
 import 'package:my_portfolio/widgets/header.dart';
+import 'package:share_plus/share_plus.dart';
 // import 'package:my_portfolio/widgets/intro_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,7 +14,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
-        onPressed: () => print("Button Pressded"),
+        onPressed: () => {Share.share("Check out Chars's portfolio https://")},
         child: const Icon(
           Icons.share,
           color: Colors.white,
