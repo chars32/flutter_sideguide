@@ -1,6 +1,7 @@
 import 'package:budject_tracker_project/pages/home_page.dart';
 import 'package:budject_tracker_project/pages/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -32,7 +33,24 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Budget Tracker'),
+        title: const Center(
+          child: Text('Budget Tracker'),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AddBudgetDialog(
+                    budgetToAdd: (budget) {},
+                  );
+                },
+              );
+            },
+            icon: const Icon(Icons.attach_money),
+          ),
+        ],
       ),
       body: pages[_currentPageIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -42,6 +60,67 @@ class _HomeState extends State<Home> {
             _currentPageIndex = index;
           })
         },
+      ),
+    );
+  }
+}
+
+class AddBudgetDialog extends StatefulWidget {
+  final Function(double) budgetToAdd;
+  const AddBudgetDialog({
+    Key? key,
+    required this.budgetToAdd,
+  }) : super(key: key);
+
+  @override
+  State<AddBudgetDialog> createState() => _AddBudgetDialogState();
+}
+
+class _AddBudgetDialogState extends State<AddBudgetDialog> {
+  final TextEditingController amountController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width / 1.3,
+        height: 200,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Add a budget",
+                style: TextStyle(fontSize: 18),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              TextField(
+                controller: amountController,
+                keyboardType: TextInputType.number,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                decoration: const InputDecoration(hintText: "Budget in \$"),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (amountController.text.isNotEmpty) {
+                    widget.budgetToAdd(
+                      double.parse(amountController.text),
+                    );
+                    Navigator.pop(context);
+                  }
+                },
+                child: const Text("Add"),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
