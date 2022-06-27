@@ -3,20 +3,28 @@ import 'package:budject_tracker_project/services/budget_service.dart';
 import 'package:budject_tracker_project/services/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final sharedPreferences = await SharedPreferences.getInstance();
+  return runApp(
+    MyApp(
+      sharedPreferences: sharedPreferences,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final SharedPreferences sharedPreferences;
+  const MyApp({Key? key, required this.sharedPreferences}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ThemeService>(
-          create: (_) => ThemeService(),
+          create: (_) => ThemeService(sharedPreferences),
         ),
         ChangeNotifierProvider<BudgetService>(
           create: (_) => BudgetService(),
