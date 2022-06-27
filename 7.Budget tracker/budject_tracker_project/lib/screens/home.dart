@@ -1,12 +1,13 @@
 import 'package:budject_tracker_project/pages/home_page.dart';
 import 'package:budject_tracker_project/pages/profile_page.dart';
+import 'package:budject_tracker_project/services/budget_service.dart';
 import 'package:budject_tracker_project/services/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -52,7 +53,11 @@ class _HomeState extends State<Home> {
                 context: context,
                 builder: (context) {
                   return AddBudgetDialog(
-                    budgetToAdd: (budget) {},
+                    budgetToAdd: (budget) {
+                      final budgetService =
+                          Provider.of<BudgetService>(context, listen: false);
+                      budgetService.budget = budget;
+                    },
                   );
                 },
               );
