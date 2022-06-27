@@ -1,7 +1,9 @@
 import 'package:budject_tracker_project/pages/home_page.dart';
 import 'package:budject_tracker_project/pages/profile_page.dart';
+import 'package:budject_tracker_project/services/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -31,10 +33,17 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final themeService = Provider.of<ThemeService>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Center(
           child: Text('Budget Tracker'),
+        ),
+        leading: IconButton(
+          onPressed: () {
+            themeService.darkTheme = !themeService.darkTheme;
+          },
+          icon: Icon(themeService.darkTheme ? Icons.sunny : Icons.dark_mode),
         ),
         actions: [
           IconButton(
