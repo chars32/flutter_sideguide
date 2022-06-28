@@ -1,5 +1,5 @@
 import 'package:budject_tracker_project/models/transaction_item.dart';
-import 'package:budject_tracker_project/services/budget_service.dart';
+import 'package:budject_tracker_project/models/view_models/budget_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -19,9 +19,9 @@ class HomePage extends StatelessWidget {
             builder: (context) {
               return AddTransactionDialog(
                 itemToAdd: (transactionItem) {
-                  final budgetService =
-                      Provider.of<BudgetService>(context, listen: false);
-                  budgetService.addItem(transactionItem);
+                  final BudgetViewModel =
+                      Provider.of<BudgetViewModel>(context, listen: false);
+                  BudgetViewModel.addItem(transactionItem);
                 },
               );
             },
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
               children: [
                 Align(
                   alignment: Alignment.topCenter,
-                  child: Consumer<BudgetService>(
+                  child: Consumer<BudgetViewModel>(
                     builder: ((context, value, child) {
                       return CircularPercentIndicator(
                         radius: screenSize.width / 4,
@@ -81,7 +81,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Consumer<BudgetService>(
+                Consumer<BudgetViewModel>(
                   builder: ((context, value, child) {
                     return ListView.builder(
                       shrinkWrap: true,
