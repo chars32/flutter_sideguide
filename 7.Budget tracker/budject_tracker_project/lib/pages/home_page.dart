@@ -19,9 +19,9 @@ class HomePage extends StatelessWidget {
             builder: (context) {
               return AddTransactionDialog(
                 itemToAdd: (transactionItem) {
-                  final BudgetViewModel =
+                  final budgetViewModel =
                       Provider.of<BudgetViewModel>(context, listen: false);
-                  BudgetViewModel.addItem(transactionItem);
+                  budgetViewModel.addItem(transactionItem);
                 },
               );
             },
@@ -41,16 +41,25 @@ class HomePage extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   child: Consumer<BudgetViewModel>(
                     builder: ((context, value, child) {
+                      final balance = value.getBalance();
+                      final budget = value.getBudget();
+                      double percentage = balance / budget;
+                      if (percentage < 0) {
+                        percentage = 0;
+                      }
+                      if (percentage > 1) {
+                        percentage = 1;
+                      }
                       return CircularPercentIndicator(
                         radius: screenSize.width / 4,
                         lineWidth: 10.0,
-                        percent: value.balance / value.budget,
+                        percent: percentage,
                         backgroundColor: Colors.white,
                         center: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              "\$${value.balance.toString().split(".")[0]}",
+                              "\$${balance.toString().split(".")[0]}",
                               style: const TextStyle(
                                 fontSize: 48,
                                 fontWeight: FontWeight.bold,
@@ -61,7 +70,7 @@ class HomePage extends StatelessWidget {
                               style: TextStyle(fontSize: 18),
                             ),
                             Text(
-                              "Budget: \$${value.budget}",
+                              "Budget: \$$budget",
                               style: const TextStyle(fontSize: 12),
                             )
                           ],

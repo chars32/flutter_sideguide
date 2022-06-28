@@ -54,9 +54,9 @@ class _HomeState extends State<Home> {
                 builder: (context) {
                   return AddBudgetDialog(
                     budgetToAdd: (budget) {
-                      final BudgetViewModel =
+                      final budgetViewModel =
                           Provider.of<BudgetViewModel>(context, listen: false);
-                      BudgetViewModel.budget = budget;
+                      budgetViewModel.budget = budget;
                     },
                   );
                 },
