@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "411979471047",
+    "project_id": "ecom-flutter-course-sideguide",
+    "storage_bucket": "ecom-flutter-course-sideguide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411979471047:android:ad3b262246959ba61906e2",
+        "android_client_info": {
+          "package_name": "com.example.ecommerce_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411979471047-l3q34342irciruiuov03s1ijbh6t4cta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2-Moo0apmC9FeqJHGnVFAixYW0UyN1n4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411979471047-l3q34342irciruiuov03s1ijbh6t4cta.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "411979471047-2aoool5i7364hrg8recnh9lcepn6t3gs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ecommerceFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
