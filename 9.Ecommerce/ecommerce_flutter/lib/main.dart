@@ -1,3 +1,4 @@
+import 'package:ecommerce_flutter/app/auth_widget.dart';
 import 'package:ecommerce_flutter/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -21,37 +22,21 @@ class MyApp extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(counterProvider);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        body: Center(
-          child: Text(
-            count.toString(),
-          ),
+      // Let's call the AuthWidget and provide the 2 builders with 2 different screens.
+      // signedInBuilder, nonSignedInBuilder
+      home: AuthWidget(
+        signedInBuilder: (context) => const Scaffold(
+          body: Center(child: Text("signed in")),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            ref.read(counterProvider.notifier).increment();
-          },
-          child: const Icon(Icons.add),
+        nonSignedInBuilder: (context) => const Scaffold(
+          body: Center(child: Text("NOT signed in")),
         ),
       ),
     );
   }
-}
-
-final counterProvider = StateNotifierProvider(
-  (ref) {
-    return Counter();
-  },
-);
-
-class Counter extends StateNotifier<int> {
-  Counter() : super(0);
-
-  void increment() => state++;
 }
