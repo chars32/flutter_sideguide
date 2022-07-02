@@ -1,4 +1,5 @@
 import 'package:ecommerce_flutter/app/auth_widget.dart';
+import 'package:ecommerce_flutter/app/pages/admin/admin_home.dart';
 import 'package:ecommerce_flutter/app/pages/auth/sign_in_page.dart';
 import 'package:ecommerce_flutter/app/providers.dart';
 import 'package:ecommerce_flutter/firebase_options.dart';
@@ -27,11 +28,17 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // Change colors in ThemeData
+        colorScheme: ColorScheme.fromSeed(
+          primary: Colors.orange,
+          seedColor: Colors.orange,
+        ),
       ),
-      // Let's call the AuthWidget and provide the 2 builders with 2 different screens.
-      // signedInBuilder, nonSignedInBuilder
       home: AuthWidget(
+        // adminSignedInBuilder is a ConsumerWidget that brings
+        // awidget with an  AppBar structurem if the user is loged
+        // with the admin count admin@admin.com
+        adminSignedInBuilder: (context) => const AdminHome(),
         signedInBuilder: (context) => Scaffold(
           body: Center(
             child: Column(
@@ -43,7 +50,11 @@ class MyApp extends ConsumerWidget {
                   onPressed: () {
                     ref.read(firebaseAuthProvider).signOut();
                   },
-                  child: const Text("Sign out"),
+                  child: const Center(
+                    child: Text(
+                      "Sign out",
+                    ),
+                  ),
                 )
               ],
             ),
