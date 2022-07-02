@@ -35,10 +35,11 @@ class MyApp extends ConsumerWidget {
         ),
       ),
       home: AuthWidget(
-        // adminSignedInBuilder is a ConsumerWidget that brings
-        // awidget with an  AppBar structurem if the user is loged
-        // with the admin count admin@admin.com
+        // Use AuthWidget to verify type of user.
         adminSignedInBuilder: (context) => const AdminHome(),
+        // adminSignedInBuilder is a ConsumerWidget that brings
+        // AdminHome widget with an  AppBar structure if the user
+        // is loged with the admin count admin@admin.com
         signedInBuilder: (context) => Scaffold(
           body: Center(
             child: Column(
