@@ -39,6 +39,7 @@ dependencies:
   firebase_storage: ^10.2.18 # for storage
   flutterfire_ui: ^0.4.2 # for pre-built uis
   flutter_riverpod: ^1.0.4 # State Management
+  image_picker: ^0.8.5+3 # grabbing image from user's gallery or camera
 
 dev_dependencies:
   flutter_test:
