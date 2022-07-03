@@ -52,6 +52,14 @@ class AdminHome extends ConsumerWidget {
                 final product = snapshot.data![index];
                 return ListTile(
                   title: Text(product.name),
+                  // modify the ListTile that the products are populated with a trailing delete Icon.
+                  // When we press the delete Icon we want to call the deleteProduct inside our
+                  // FirestoreService that is defined as our databaseProvider.
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () =>
+                        ref.read(databaseProvider)!.deleteProduct(product.id!),
+                  ),
                 );
               },
             );

@@ -15,11 +15,10 @@ class FirestoreService {
   Future<void> addProduct(
     Product product,
   ) async {
-    await firestore
-        .collection("products")
-        .add(product.toMap())
-        .then((value) => print(value))
-        .catchError((onError) => print("Error"));
+    // The problem is that we never save this id inside a product, so when we retrieve it,
+    // we don’t have the id (path id), to be able to easily delete it.
+    final docId = firestore.collection("products").doc().id;
+    await firestore.collection("products").doc(docId).set(product.toMap(docId));
   }
 
 // getProducts service RETURN a List<Products> that we get from
@@ -42,5 +41,11 @@ class FirestoreService {
               final d = doc.data();
               return Product.fromMap(d);
             }).toList());
+  }
+
+  // To delete a Product from our collection is as simple as getting the collection,
+  // getting the document via an id, and deleting it like below.
+  Future<void> deleteProduct(String id) async {
+    return await firestore.collection("products").doc(id).delete();
   }
 }
