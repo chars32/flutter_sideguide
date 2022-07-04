@@ -1,6 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'package:ecommerce_flutter/app/providers.dart';
 import 'package:ecommerce_flutter/models/product.dart';
+import 'package:ecommerce_flutter/utils/snackbars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -51,6 +54,9 @@ class _AdminAddProductPageState extends ConsumerState<AdminAddProductPage> {
         price: double.parse(priceEditingController.text),
         imageUrl: imageUrl,
       ));
+      // Open snack bar
+      openIconSnackBar(context, "Product added successfully",
+          const Icon(Icons.check, color: Colors.white));
       Navigator.pop(context);
     }
 
