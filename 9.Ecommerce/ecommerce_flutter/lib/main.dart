@@ -1,6 +1,7 @@
 import 'package:ecommerce_flutter/app/auth_widget.dart';
 import 'package:ecommerce_flutter/app/pages/admin/admin_home.dart';
 import 'package:ecommerce_flutter/app/pages/auth/sign_in_page.dart';
+import 'package:ecommerce_flutter/app/pages/user/user_home.dart';
 import 'package:ecommerce_flutter/app/providers.dart';
 import 'package:ecommerce_flutter/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -40,29 +41,10 @@ class MyApp extends ConsumerWidget {
         // adminSignedInBuilder is a ConsumerWidget that brings
         // AdminHome widget with an  AppBar structure if the user
         // is loged with the admin count admin@admin.com
-        signedInBuilder: (context) => Scaffold(
-          body: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text("signed in"),
-                // let’s add a sign-out button that simply calls the signOut() function of our firebase auth provider.
-                ElevatedButton(
-                  onPressed: () {
-                    ref.read(firebaseAuthProvider).signOut();
-                  },
-                  child: const Center(
-                    child: Text(
-                      "Sign out",
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-        // Call SignInPage widget when the user is not logged in
+        signedInBuilder: (context) => const UserHome(),
+        // SignedInBuilder when logs goes directly to UserHome
         nonSignedInBuilder: (_) => const SignInPage(),
+        // Call SignInPage widget when the user is not logged in
       ),
     );
   }
