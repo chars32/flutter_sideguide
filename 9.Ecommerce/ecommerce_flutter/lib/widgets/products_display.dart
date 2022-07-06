@@ -1,4 +1,5 @@
 import 'package:ecommerce_flutter/app/providers.dart';
+import 'package:ecommerce_flutter/extensions/string_ext.dart';
 import 'package:ecommerce_flutter/models/product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class ProductsDisplay extends ConsumerWidget {
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              product.name,
+                              product.name.capitalize(),
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
