@@ -1,3 +1,4 @@
+import 'package:ecommerce_flutter/app/pages/user/user_bag.dart';
 import 'package:flutter/material.dart';
 
 // Creating a UserTopBar
@@ -21,8 +22,8 @@ class UserTopBar extends StatelessWidget {
         ),
         IconButton(
           onPressed: () {
-            // Navigator.push(context,
-            //     MaterialPageRoute(builder: (context) => const UserBag()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const UserBag()));
           },
           icon: const Icon(Icons.shopping_bag),
         )
