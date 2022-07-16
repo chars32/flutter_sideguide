@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_flutter/models/product.dart';
+import 'package:ecommerce_flutter/models/user_data.dart';
 
 // class that will initialize the firestore instance,
 // and manipulate data coming from/to the database.
@@ -47,5 +48,17 @@ class FirestoreService {
   // getting the document via an id, and deleting it like below.
   Future<void> deleteProduct(String id) async {
     return await firestore.collection("products").doc(id).delete();
+  }
+
+  // save the user, on its own user's collection
+  Future<void> addUser(
+    UserData user,
+  ) async {
+    await firestore.collection("users").doc(user.uid).set(user.toMap());
+  }
+
+  Future<UserData?> getUser(String uid) async {
+    final doc = await firestore.collection("users").doc(uid).get();
+    return doc.exists ? UserData.fromMap(doc.data()!) : null;
   }
 }
