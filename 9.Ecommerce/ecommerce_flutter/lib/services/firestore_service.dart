@@ -57,6 +57,7 @@ class FirestoreService {
     await firestore.collection("users").doc(user.uid).set(user.toMap());
   }
 
+  // To get the user is a bit more complex as we have to check if the user exists first
   Future<UserData?> getUser(String uid) async {
     final doc = await firestore.collection("users").doc(uid).get();
     return doc.exists ? UserData.fromMap(doc.data()!) : null;

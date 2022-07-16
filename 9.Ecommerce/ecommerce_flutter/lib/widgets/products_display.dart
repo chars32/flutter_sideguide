@@ -1,7 +1,7 @@
-import 'package:ecommerce_flutter/app/pages/product/product_detail.dart';
 import 'package:ecommerce_flutter/app/providers.dart';
 import 'package:ecommerce_flutter/extensions/string_ext.dart';
 import 'package:ecommerce_flutter/models/product.dart';
+import 'package:ecommerce_flutter/pages/product/product_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';

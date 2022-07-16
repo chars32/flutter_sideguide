@@ -1,6 +1,6 @@
-import 'package:ecommerce_flutter/app/pages/admin/admin_add_product.dart';
 import 'package:ecommerce_flutter/app/providers.dart';
 import 'package:ecommerce_flutter/models/product.dart';
+import 'package:ecommerce_flutter/pages/admin/admin_add_product.dart';
 import 'package:ecommerce_flutter/utils/snackbars.dart';
 import 'package:ecommerce_flutter/widgets/project_list_tile.dart';
 import 'package:flutter/material.dart';

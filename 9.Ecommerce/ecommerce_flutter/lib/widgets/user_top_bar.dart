@@ -1,4 +1,4 @@
-import 'package:ecommerce_flutter/app/pages/user/user_bag.dart';
+import 'package:ecommerce_flutter/pages/user/user_bag.dart';
 import 'package:flutter/material.dart';
 
 // Creating a UserTopBar
