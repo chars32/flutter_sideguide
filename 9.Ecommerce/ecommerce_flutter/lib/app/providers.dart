@@ -1,5 +1,6 @@
 import 'package:ecommerce_flutter/services/firestore_service.dart';
 import 'package:ecommerce_flutter/services/storage_servide.dart';
+import 'package:ecommerce_flutter/view_models/bag_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -37,4 +38,9 @@ final storageProvider = Provider<StorageService?>((ref) {
     return StorageService(uid: uid);
   }
   return null;
+});
+
+// 5. Provider that check yf BagViewModel values change
+final bagProvider = ChangeNotifierProvider<BagViewModel>((ref) {
+  return BagViewModel();
 });
